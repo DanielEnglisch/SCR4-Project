@@ -9,7 +9,7 @@ final class MVC{
     const PARAM_CONTROLLER = 'c';
     const PARAM_ACTION = 'a';
 
-    const DEFAULT_CONTROLLER = 'Home';
+    const DEFAULT_CONTROLLER = 'Products';
     const DEFAULT_ACTION = 'Index';
 
     const CONTROLLER_NAMESPACE = '\\Controllers';

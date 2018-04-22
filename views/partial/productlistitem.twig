@@ -1,0 +1,13 @@
+
+<?php foreach($model['products'] as $num => $product){
+   echo "
+    <tr>
+      <th scope='row'>$num</th>
+      <td>$product->name</td>
+      <td>$product->manufacturer</td>
+      <td>$product->author</td>
+      <td>$product->average_raiting</td>
+      <td>$product->category</td>
+    </tr>
+   ";
+} ?>

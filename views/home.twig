@@ -1,6 +1,26 @@
 <?php self::renderView('partial/header', $model); ?>
 <div class="container">
-<h1> Hello World </h1>
-<p>This is a paragraph</p>
+<h1> Products </h1>
+
+<?php if($model['products'] !== null): ?>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Manufacturer</th>
+      <th scope="col">Author</th>
+      <th scope="col">Raiting</th>
+      <th scope="col">Category</th>
+    </tr>
+  </thead>
+  <tbody>
+   <?php self::renderView('partial/productlistitem', $model); ?>
+  </tbody>
+</table>
+<?php else: ?>
+    <p> Currently there are not products available! </p>
+<?php endif; ?>
+
 </div>
-<?php self::renderView('partial/footer', $model); ?>
+<?php /*self::renderView('partial/footer', $model);*/ ?>
