@@ -29,10 +29,10 @@ CREATE TABLE products(
     author VARCHAR(20),
     name VARCHAR(30) NOT NULL,
     manufacturer VARCHAR(30) NOT NULL,
-    category VARCHAR(20) NOT NULL,
+    category VARCHAR(20),
     CONSTRAINT PRIMARY KEY (product_id, author),
-    CONSTRAINT FOREIGN KEY (author) REFERENCES users(username),
-    CONSTRAINT FOREIGN KEY (category) REFERENCES categories(name)
+    CONSTRAINT FOREIGN KEY (author) REFERENCES users(username) ON DELETE CASCADE,
+    CONSTRAINT FOREIGN KEY (category) REFERENCES categories(name) ON DELETE SET NULL
     
 );
 
@@ -44,8 +44,8 @@ CREATE TABLE raitings(
     value Int(1) NOT NULL,
     comment Text,
     CONSTRAINT PRIMARY KEY (raiting_id, product_id),
-    CONSTRAINT FOREIGN KEY (product_id) REFERENCES products(product_id),
-    CONSTRAINT FOREIGN KEY (author) REFERENCES users(username),
+    CONSTRAINT FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
+    CONSTRAINT FOREIGN KEY (author) REFERENCES users(username) ON DELETE CASCADE,
     CONSTRAINT raitings_value_check CHECK (`value`>=1 AND `value`<=5)
 
 );
