@@ -6,8 +6,8 @@ class Products extends \Framework\Controller{
 
     private $dataLayer;
 
-    public function __construct(){
-        $this->dataLayer = new \BusinessLogic\MockDataLayer;
+    public function __construct(\BusinessLogic\DataLayer $dataLayer){
+        $this->dataLayer = $dataLayer;
     }
 
     public function GET_Index(){

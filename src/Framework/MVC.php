@@ -29,7 +29,7 @@ final class MVC{
         $action = isset($_REQUEST[self::PARAM_ACTION])?$_REQUEST[self::PARAM_ACTION]:self::DEFAULT_ACTION;
         //instanciate controller and call accourding method
         $m = $method . "_" . $action;
-        (new $controller)->$m();
+        Injector::resolve($controller)->$m();
 
     }
 

@@ -10,4 +10,7 @@ spl_autoload_register(function($class){
     }
 });
 
+\Framework\Injector::register(\BusinessLogic\DataLayer::class, false, \BusinessLogic\MockDataLayer::class);
+\Framework\Injector::register(\BusinessLogic\Session::class,true);
+
 \Framework\MVC::handleRequest();
