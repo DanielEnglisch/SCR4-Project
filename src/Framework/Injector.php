@@ -19,11 +19,17 @@ final class Injector{
         if(isset(self::$instances[$serviceName]))
             return self::$instances[$serviceName];
         
-            // Get classname
+        // Get classname
         $className = isset(self::$classNames[$serviceName]) && self::$classNames[$serviceName] !== null ?
         self::$classNames[$serviceName]
         : $serviceName;
         
+        // Check if singleton and instance present
+        if(isset(self::$singletonFlags[$serviceName]) && self::$singletonFlags[$serviceName] === true){
+            if(isset(self::$instances[$serviceName]) && self::$instances[$serviceName] != null)
+                return self::$instances[$serviceName];
+        }   
+
         // Create Constructor parameters
         $actualParams = array();
         $rClass = new \ReflectionClass($className);
@@ -46,7 +52,6 @@ final class Injector{
             }
 
         }
-        // Singleton: TODO
         // Create and return instance
         $instance = new $className(...$actualParams);
         // Store instance in case of singleton
