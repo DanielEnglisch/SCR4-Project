@@ -20,11 +20,11 @@ abstract class Controller{
         MVC::buildActionLink($action, $controller, $params);
     }
 
-    public final function resirectToUrl($url){
-        header("Location $url");
+    public final function redirectToUrl($url){
+        header("Location: $url");
     }
 
-    public final function redirect($action, $controller, $params = null){
+    public final function redirect($action, $controller, $params = array()){
         $this->redirectToUrl($this->buildActionLink($action, $controller, $params));
     }
 }
