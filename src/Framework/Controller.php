@@ -17,7 +17,7 @@ abstract class Controller{
     }
 
     public final function buildActionLink($action, $controller, array $params = array()){
-        MVC::buildActionLink($action, $controller, $params);
+        return MVC::buildActionLink($action, $controller, $params);
     }
 
     public final function redirectToUrl($url){
