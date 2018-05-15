@@ -1,13 +1,12 @@
 
-<?php foreach($model['products'] as $num => $product){
-   echo "
+<?php foreach($model['products'] as $num => $product): ?>
     <tr>
-      <th scope='row'>$num</th>
-      <td>$product->name</td>
-      <td>$product->manufacturer</td>
-      <td>$product->author</td>
-      <td>$product->average_raiting</td>
-      <td>$product->category</td>
+      <th scope='row'><?php self::htmlOut($num) ?></th>
+      <td><?php self::htmlOut($product->getName()) ?></td>
+      <td><?php self::htmlOut($product->getManufacturer()) ?></td>
+      <td><?php self::htmlOut($product->getAuthor()) ?></td>
+      <td><?php self::htmlOut($product->getAverageRating()) ?></td>
+      <td><?php self::htmlOut($product->getCategory()) ?></td>
     </tr>
-   ";
-} ?>
+
+<?php endforeach; ?>
