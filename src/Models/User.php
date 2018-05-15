@@ -4,11 +4,15 @@ namespace Models;
 
 class User extends Entity{
 
-    public $password;
+    private $username;
    
-    public function __construct($id, $password){
+    public function __construct($id){
         parent::__construct($id);
-        $this->password = $password;
+        $this->username = $id;
+    }
+
+    public function getUsername(){
+        return $this->username;
     }
 
 }

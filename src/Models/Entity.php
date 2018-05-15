@@ -3,10 +3,14 @@
 namespace Models;
 
 class Entity{
-    public $id;
+    private $id;
 
     public function __construct($id){
         $this->id = $id;
+    }
+
+    public function getId(){
+        return $this->id;
     }
 
 

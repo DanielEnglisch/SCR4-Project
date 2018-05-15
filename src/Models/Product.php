@@ -4,21 +4,44 @@ namespace Models;
 
 class Product extends Entity{
 
-    public $author;
-    public $name;
-    public $manufacturer;
-    public $num_raitings;
-    public $average_raiting;
-    public $category;
+    private $author;
+    private $name;
+    private $manufacturer;
+    private $num_ratings;
+    private $average_rating;
+    private $category;
    
-    public function __construct($id, $author, $name, $manufacturer, $num_raitings, $average_raiting, $category){
+    public function __construct($id, $author, $name, $manufacturer, $num_ratings, $average_rating, $category){
         parent::__construct($id);
         $this->author = $author;
         $this->manufacturer = $manufacturer;
         $this->name = $name;
-        $this->num_raitings = $num_raitings;
-        $this->average_raiting = $average_raiting;
+        $this->num_ratings = $num_ratings;
+        $this->$average_rating = $average_rating;
         $this->category = $category;
     }
 
+    public function getAuthor(){
+        return $this->author;
+    }
+
+    public function getName(){
+        return $this->name;
+    }
+
+    public function getManufacturer(){
+        return $this->manufacturer;
+    }
+
+    public function getNumberOfRatings(){
+        return $this->num_ratings;
+    }
+
+    public function getAverageRating(){
+        return $this->average_rating;
+    }
+
+    public function getCategory(){
+        return $this->category;
+    }
 }
