@@ -1,14 +1,14 @@
 -- SCR4-Produktbewertungsportal SQL
--- v.1.0 - Daniel Englisch
+-- v.1.1 - Daniel Englisch
 
 
 -- Drop previous
-DROP TABLE raitings;
+DROP TABLE ratings;
 DROP TABLE products;
 DROP TABLE users;
 DROP TABLE categories;
-DROP FUNCTION IF EXISTS `getNumberOfRaitings`;
-DROP FUNCTION IF EXISTS `getAverageRaiting`;
+DROP FUNCTION IF EXISTS `getNumberOfRatings`;
+DROP FUNCTION IF EXISTS `getAverageRating`;
 
 
 -- Tables
@@ -36,17 +36,17 @@ CREATE TABLE products(
     
 );
 
-CREATE TABLE raitings(
-    raiting_id Int AUTO_INCREMENT,
+CREATE TABLE ratings(
+    rating_id Int AUTO_INCREMENT,
     product_id Int,
     author VARCHAR(20) NOT NULL,
     date DATETIME DEFAULT CURRENT_TIMESTAMP,
     value Int(1) NOT NULL,
     comment Text,
-    CONSTRAINT PRIMARY KEY (raiting_id, product_id),
+    CONSTRAINT PRIMARY KEY (rating_id, product_id),
     CONSTRAINT FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE,
     CONSTRAINT FOREIGN KEY (author) REFERENCES users(username) ON DELETE CASCADE,
-    CONSTRAINT raitings_value_check CHECK (`value`>=1 AND `value`<=5)
+    CONSTRAINT ratings_value_check CHECK (`value`>=1 AND `value`<=5)
 
 );
 
@@ -54,18 +54,18 @@ CREATE TABLE raitings(
 
 DELIMITER $$
 
--- getAverageRaiting(product_id)
-CREATE DEFINER=`root`@`localhost` FUNCTION `getAverageRaiting` (`product_id` INT) RETURNS FLOAT BEGIN
+-- getAverageRating(product_id)
+CREATE DEFINER=`root`@`localhost` FUNCTION `getAverageRating` (`product_id` INT) RETURNS FLOAT BEGIN
  DECLARE res FLOAT;
- SELECT AVG(`value`) INTO res FROM raitings WHERE raitings.product_id = product_id;
+ SELECT AVG(`value`) INTO res FROM ratings WHERE ratings.product_id = product_id;
  RETURN res;
 END$$
 
--- getNumberOfRaitings(product_id)
-CREATE DEFINER=`root`@`localhost` FUNCTION `getNumberOfRaitings` (`product_id` INT) RETURNS INT(11) NO SQL
+-- getNumberOfRatings(product_id)
+CREATE DEFINER=`root`@`localhost` FUNCTION `getNumberOfRatings` (`product_id` INT) RETURNS INT(11) NO SQL
 BEGIN
  DECLARE res INT;
- SELECT COUNT(*) INTO res FROM raitings WHERE raitings.product_id = product_id;
+ SELECT COUNT(*) INTO res FROM ratings WHERE ratings.product_id = product_id;
  RETURN res;
 END$$
 
