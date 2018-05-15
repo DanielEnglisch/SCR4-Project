@@ -698,7 +698,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+/num_raitings: Integer",
+											"text": "+/num_ratings: Integer",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -727,7 +727,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+/average_raiting",
+											"text": "+/average_rating",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -928,7 +928,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "Raiting",
+											"text": "Rating",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1046,7 +1046,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "«PK»+review_id: Integer",
+											"text": "«PK»+rating_id: Integer",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2938,7 +2938,7 @@
 							"width": 109.6162109375,
 							"height": 64,
 							"autoResize": false,
-							"text": "num_raitings and average_raiting are routines",
+							"text": "num_ratings and average_rating are routines",
 							"wordWrap": true
 						},
 						{
@@ -3164,9 +3164,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 706,
+									"left": 705,
 									"top": 432,
-									"width": 5.05908203125,
+									"width": 6.26513671875,
 									"height": 13,
 									"autoResize": false,
 									"alpha": -0.5235987755982988,
@@ -3267,9 +3267,9 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 792,
+									"left": 790,
 									"top": 425,
-									"width": 21.68359375,
+									"width": 24.6669921875,
 									"height": 13,
 									"autoResize": false,
 									"alpha": 0.5235987755982988,
@@ -3795,7 +3795,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFi6WijTuUu4zQ="
 							},
-							"name": "num_raitings",
+							"name": "num_ratings",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -3813,11 +3813,10 @@
 							"_parent": {
 								"$ref": "AAAAAAFi6WijTuUu4zQ="
 							},
-							"name": "average_raiting",
+							"name": "average_rating",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
-							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -3837,7 +3836,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Raiting",
+					"name": "Rating",
 					"visibility": "public",
 					"attributes": [
 						{
@@ -3846,7 +3845,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFi6WoIY+VygGw="
 							},
-							"name": "review_id",
+							"name": "rating_id",
 							"stereotype": "PK",
 							"visibility": "public",
 							"isStatic": false,
