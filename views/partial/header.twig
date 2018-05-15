@@ -8,3 +8,6 @@
 </head>
 <body>
 <?php self::renderView('partial/navbar', $model); ?>
+<?php if(isset($model['errors'])){
+        self::renderView('partial/error', $model['errors'], true);
+} ?>

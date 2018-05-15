@@ -8,11 +8,14 @@ final class ViewRenderer{
 
     private function __construct(){}
 
-    public static function renderView(string $view, array $model){
+    public static function renderView(string $view, array $model, $irgnoreGlobals = false){
         /* Add globals to every model*/
-        foreach(self::$globals as $key => $value){
-            $model[$key] = $value;
+        if($irgnoreGlobals == false){
+            foreach(self::$globals as $key => $value){
+                $model[$key] = $value;
+            }
         }
+
         require(MVC::getViewPath() . "/$view.twig");
     }
 
@@ -27,7 +30,6 @@ final class ViewRenderer{
             self::htmlOut($content);
         echo("</a>");
     }
-
     
     private static function beginActionForm($action, $controller, $params = null, $method = "GET", $cssClass = null){
         $cc = $cssClass !== null ? " class=\"$cssClass\"" : '';

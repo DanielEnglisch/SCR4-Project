@@ -11,9 +11,10 @@ spl_autoload_register(function($class){
 });
 
 \Framework\Injector::register(\BusinessLogic\DataLayer::class, false, \BusinessLogic\MockDataLayer::class);
-\Framework\Injector::register(\BusinessLogic\Session::class,true);
+\Framework\Injector::register(\Framework\Session::class,true);
 
 /* Add Globals */
-\Framework\ViewRenderer::$globals["test"] = "HELLO TEST";
+\Framework\ViewRenderer::$globals["test"] = "GG";
+\Framework\ViewRenderer::$globals["user"] = \Framework\Injector::resolve("BusinessLogic\AuthManager")->getLoggedInUser();
 
 \Framework\MVC::handleRequest();

@@ -12,6 +12,9 @@
             <ul class="navbar-nav nav">
                 <li><?php self::actionLink('Products', 'Index','Products'); ?></li>
             </ul>
+            <div class="navbar-right">
+                <?php self::renderView('partial/user', $model); ?>
+            </div>
         </div>
     </div>
 </nav>

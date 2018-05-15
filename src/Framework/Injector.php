@@ -15,20 +15,16 @@ final class Injector{
     }
 
     public static function resolve($serviceName){
+
         // Check if there is already an instance
-        if(isset(self::$instances[$serviceName]))
+        if(isset(self::$instances[$serviceName])){
             return self::$instances[$serviceName];
-        
+        }
+
         // Get classname
         $className = isset(self::$classNames[$serviceName]) && self::$classNames[$serviceName] !== null ?
         self::$classNames[$serviceName]
         : $serviceName;
-        
-        // Check if singleton and instance present
-        if(isset(self::$singletonFlags[$serviceName]) && self::$singletonFlags[$serviceName] === true){
-            if(isset(self::$instances[$serviceName]) && self::$instances[$serviceName] != null)
-                return self::$instances[$serviceName];
-        }   
 
         // Create Constructor parameters
         $actualParams = array();
@@ -47,7 +43,7 @@ final class Injector{
                     // Try to resolce parameter
                     $actualParams[] = self::resolve($rParam->getClass()->name);
                 }else{
-                    die("Cannot resolve constructor param '${$rParam->getName()}' for class '$className'");
+                    die("Cannot resolve constructor param '" . $rParam->getName() . "' for class '$className'");
                 }
             }
 

@@ -65,14 +65,13 @@ class MockDataLayer implements DataLayer {
 
     public function getUser($username)
     {
-        $res = array();
 
         foreach ($this->users as $id => $user){
-            if($user->getId() == $username)
-                $res[] = $user;
+            if($user->getUsername() == $username)
+                return $user;
         }
 
-        return $res;
+        return null;
     }
 
     public function getUserForUsernameAndPassword($username, $password)

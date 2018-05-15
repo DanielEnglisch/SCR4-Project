@@ -12,23 +12,19 @@ class User extends \Framework\Controller{
 
     public function GET_login(){
         if($this->authManager->isLoggedIn())
-            return $this->redirect('Index', 'Home');
+            return $this->redirect('Index', 'Products');
         else
-            return $this->renderView('login',[
-                'user' => $this->authManager->getLoggedInUser(),
-
-            ]);
+            return $this->renderView('login');
     }
 
     public function POST_login(){
         if($this->authManager->auth($this->getParam('un'), $this->getParam('pwd'))){
-            $this->redirect('Index', 'Home');
+            $this->redirect('Index', 'Products');
         }else{
             $this->renderView('login',
             [
                 'username' => $this->getParam('un'),
                 'errors' => ['Invalid user name or password'],
-                'user' => $this->authManager->getLoggedInUser(),
             ]
         );
         }
@@ -36,7 +32,7 @@ class User extends \Framework\Controller{
 
     public function POST_logout(){
         $this->authManager->logout();
-        return $this->redirect('Index', 'Home');
+        return $this->redirect('Index', 'Products');
     }
 
 }

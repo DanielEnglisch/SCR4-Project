@@ -17,7 +17,7 @@ final class AuthManager{
     public function auth($username, $password){
         $user = $this->dataLayer->getUserForUsernameAndPassword($username, $password);
         if($user != null){
-            $this->session->setValue(self::SESSION_USER, $user->getId());
+            $this->session->setValue(self::SESSION_USER, $user->getUsername());
             return true;
         }else{
             self::logout();
