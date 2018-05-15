@@ -13,4 +13,7 @@ spl_autoload_register(function($class){
 \Framework\Injector::register(\BusinessLogic\DataLayer::class, false, \BusinessLogic\MockDataLayer::class);
 \Framework\Injector::register(\BusinessLogic\Session::class,true);
 
+/* Add Globals */
+\Framework\ViewRenderer::$globals["test"] = "HELLO TEST";
+
 \Framework\MVC::handleRequest();

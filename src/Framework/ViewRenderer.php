@@ -4,9 +4,15 @@ namespace Framework;
 
 final class ViewRenderer{
 
+    public static $globals = array();
+
     private function __construct(){}
 
     public static function renderView(string $view, array $model){
+        /* Add globals to every model*/
+        foreach(self::$globals as $key => $value){
+            $model[$key] = $value;
+        }
         require(MVC::getViewPath() . "/$view.twig");
     }
 
