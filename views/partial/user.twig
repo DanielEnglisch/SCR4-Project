@@ -1,0 +1,12 @@
+<ul class="nav navbar-nav">
+    <?php if(!isset($model['user'])): ?>
+        <li><?php self::actionLink('Login', 'Login' , 'User'); ?></li>
+    <?php else: ?>
+        <li class="navbar-text"><?php self::htmlOut($model['user']->getUsername()); ?></li>
+        <li>
+            <?php self::beginActionForm('Logout' , 'User', null, 'post', 'navbar-form') ?>
+                <button class="btn btn-link">Logout</button>
+            <?php self::endActionForm() ?>
+        </li>
+    <?php endif; ?>
+<ul>
