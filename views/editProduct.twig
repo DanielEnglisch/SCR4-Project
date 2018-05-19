@@ -1,0 +1,43 @@
+<?php self::renderView('partial/header', $model); ?>
+
+<div class="container">
+<h1>Edit Product</h1>
+    <?php self::beginActionForm('editProduct','Products',null,'post') ?>
+
+    <input type="hidden" name="pid" value="<?php self::htmlOut($model['pid']) ?>"/>
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" id="name" name="name" value="<?php isset($model['name'])? self::htmlOut($model['name']):"" ?>"/>
+        </div>
+
+        <div class="form-group">
+            <label for="manufacturer">Manufacturer</label>
+            <input class="form-control" type="text" id="manufacturer" name="manufacturer" value="<?php isset($model['manufacturer'])? self::htmlOut($model['manufacturer']):"" ?>"/>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Manufacturer</label>
+
+             <select class="form-control" id="category" name="category">
+                <?php foreach($model['categories'] as $cat): ?>
+                
+                    <?php if(isset($model['category']) && $cat->getName() == $model['category']): ?>
+                        <option  selected value="<?php self::htmlOut($cat->getName()) ?>"><?php self::htmlOut($cat->getName()) ?></option >
+                    <?php else: ?>
+                        <option  value="<?php self::htmlOut($cat->getName()) ?>"><?php self::htmlOut($cat->getName()) ?></option >
+                    <?php endif; ?>
+
+                <?php endforeach; ?>
+                
+            </select> 
+
+        </div>
+
+        
+
+        <button class="btn btn-primary">Save</button>
+    <?php self::endActionForm(); ?>
+</div>
+
+<?php self::renderView('partial/footer', $model); ?>

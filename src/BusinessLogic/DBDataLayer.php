@@ -141,6 +141,21 @@ class DBDataLayer implements DataLayer{
 
     }
 
+    public function editProduct($pid, $name, $manufacturer, $category){
+
+        $con = $this->getConnection();
+        $con->autocommit(false);
+        $stat = $this->executeStatement($con, 'UPDATE products SET name=?, manufacturer=?, category=? WHERE product_id=?',
+        function($s) use ($pid, $name, $manufacturer, $category){
+            $s->bind_param('sssi', $name, $manufacturer, $category, $pid);
+        });
+        $stat->close();
+        $con->commit();
+        $con->close();
+   }
+
+
+
     public function getCategories(){
         $categories = array();
         $con = $this->getConnection();
