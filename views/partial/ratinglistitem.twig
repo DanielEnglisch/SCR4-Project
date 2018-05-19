@@ -1,0 +1,13 @@
+
+<?php foreach($model['ratings'] as $num => $rating): ?>
+
+    <div class="row">
+        <p>Rating by <b><?php self::htmlOut($rating->getAuthor()); ?></b> created <?php self::htmlOut($rating->getDate()); ?></p>
+        <div class="container">
+<b>Rating: </b> <?php self::htmlOut($rating->getValue()); ?><br/>
+        <b>Comment: </b> <?php self::htmlOut($rating->getComment()); ?>
+        </div>
+
+    </div>
+    <br/>
+<?php endforeach; ?>

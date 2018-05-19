@@ -1,0 +1,22 @@
+<?php self::renderView('partial/header', $model); ?>
+
+<div class="container">
+    <h1> Detail page of product '<?php self::htmlOut($model['product']->getName()); ?>' </h1>
+    <div class="container">
+        <b>Author: </b><?php self::htmlOut($model['product']->getAuthor()); ?></br>
+        <b>Manufacturer: </b><?php self::htmlOut($model['product']->getManufacturer()); ?></br>
+        <b>Number of Ratings: </b><?php self::htmlOut($model['product']->getNumberOfRatings()); ?></br>
+        <b>Average Rating: </b><?php self::htmlOut($model['product']->getAverageRating()); ?></br>
+    </div>
+
+    <h2> Ratings: </h2>
+    <div class="container">
+        <?php if($model['ratings'] != null): ?>
+
+        <?php self::renderView('partial/ratinglistitem', $model); ?>
+
+        <?php else: ?>
+            <p> Currently this product has no ratings!</p>
+        <?php endif; ?>
+    </div>
+</div>

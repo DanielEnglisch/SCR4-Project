@@ -7,8 +7,6 @@ class Products extends \Framework\Controller{
     private $dataLayer;
     private $authManager;
 
-
-
     public function __construct(\BusinessLogic\DataLayer $dataLayer, \BusinessLogic\AuthManager $authManager){
         $this->dataLayer = $dataLayer;
         $this->authManager = $authManager;
@@ -19,6 +17,14 @@ class Products extends \Framework\Controller{
        $this->renderView('home', [
            'products' => $this->dataLayer->getProducts(),
        ]);
+    }
+
+    public function GET_Detail(){
+
+        $this->renderView('detail', [
+            'ratings' => $this->dataLayer->getRatingsForProduct($this->getParam('pid')),
+            'product' => $this->dataLayer->getProductWithId($this->getParam('pid'))
+        ]);
     }
 
 }

@@ -1,5 +1,6 @@
 
 <?php foreach($model['products'] as $num => $product): ?>
+
     <tr>
       <th scope='row'><?php self::htmlOut($num) ?></th>
       <td><?php self::htmlOut($product->getName()) ?></td>
@@ -8,6 +9,10 @@
       <td><?php self::htmlOut($product->getNumberOfRatings()) ?></td>
       <td><?php self::htmlOut($product->getAverageRating()) ?></td>
       <td><?php self::htmlOut($product->getCategory()) ?></td>
+      <td><?php self::actionLink('Details', 'Detail','Products',[
+        'pid' => $product->getId(),
+        'name' => $product->getName()
+        ]) ?></td>
     </tr>
 
 <?php endforeach; ?>
