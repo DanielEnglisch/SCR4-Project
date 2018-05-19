@@ -15,6 +15,7 @@ class Products extends \Framework\Controller{
     }
 
     public function GET_Index(){
+        
        $this->renderView('home', [
            'products' => $this->dataLayer->getProducts(),
        ]);

@@ -17,7 +17,7 @@ class Product extends Entity{
         $this->manufacturer = $manufacturer;
         $this->name = $name;
         $this->num_ratings = $num_ratings;
-        $this->$average_rating = $average_rating;
+        $this->average_rating = $average_rating;
         $this->category = $category;
     }
 

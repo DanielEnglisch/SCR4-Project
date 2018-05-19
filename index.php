@@ -10,7 +10,7 @@ spl_autoload_register(function($class){
     }
 });
 
-\Framework\Injector::register(\BusinessLogic\DataLayer::class, false, \BusinessLogic\MockDataLayer::class);
+\Framework\Injector::register(\BusinessLogic\DataLayer::class, false, \BusinessLogic\DBDataLayer::class);
 \Framework\Injector::register(\Framework\Session::class,true);
 
 /* Add Globals */
