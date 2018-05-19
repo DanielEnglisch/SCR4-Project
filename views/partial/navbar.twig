@@ -11,6 +11,8 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="navbar-nav nav">
                 <li><?php self::actionLink('Products', 'Index','Products'); ?></li>
+                <li><?php self::actionLink('Search', 'Search','Products'); ?></li>
+
             </ul>
             <div class="navbar-right">
                 <?php self::renderView('partial/user', $model); ?>

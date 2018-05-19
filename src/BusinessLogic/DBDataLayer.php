@@ -62,6 +62,30 @@ class DBDataLayer implements DataLayer{
         return $ratings;
     }
 
+    public function getProductsFromQuery($query){
+
+        if($query == null)
+            return null;
+
+        $query = "%$query%";
+
+        $products = array();
+        $con = $this->getConnection();
+        $stat = $this->prepareStatement($con, 'SELECT * FROM products WHERE name LIKE ? OR manufacturer LIKE ?',
+        function($s) use ($query){
+            $s->bind_param('ss', $query,$query);
+        });
+        $stat->execute();
+        $res = $stat->get_result();
+        while($p = $res->fetch_object()){
+            $products[] = new \Models\Product($p->product_id,  $p->author, $p->name ,$p->manufacturer , $this->getNumberOfRatings($p->product_id) , $this->getAverageRating($p->product_id), $p->category);
+        }
+
+        $stat->close();
+        $con->close();
+        return $products;
+    }
+
     public function getProductWithId($product_id){
         $product = null;
         $con = $this->getConnection();

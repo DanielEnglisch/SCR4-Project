@@ -27,4 +27,14 @@ class Products extends \Framework\Controller{
         ]);
     }
 
+    public function GET_Search(){
+        
+        $this->renderView('search',[
+            'products' => $this->dataLayer->getProductsFromQuery($this->getParam("title")),
+            'title' => $this->getParam('title'),
+        ]);
+    }
+
+
+
 }

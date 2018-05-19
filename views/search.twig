@@ -1,0 +1,40 @@
+<?php self::renderView('partial/header', $model); ?>
+<div class="container">
+<h1> Search Products </h1>
+
+<p>
+  
+  <?php self::beginActionForm('Search', 'Products', null, 'GET', 'form-inline'); ?>
+    <div class="form-group">
+        <label for="title">Search</label>
+        <input class="form-control" id="title" name="title" value="<?php self::htmlOut($model['title']); ?>"/>
+    </div>
+    <button class="btn btn-primary">Search</button>
+  <?php self::endActionForm(); ?>
+
+</p>
+
+<?php if($model['products'] !== null): ?>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Manufacturer</th>
+      <th scope="col">Author</th>
+      <th scope="col">Num Rating</th>
+      <th scope="col">Rating</th>
+      <th scope="col">Category</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+   <?php self::renderView('partial/productlistitem', $model); ?>
+  </tbody>
+</table>
+<?php else: ?>
+    <p> No products match the current search criteria! </p>
+<?php endif; ?>
+
+</div>
+<?php /*self::renderView('partial/footer', $model);*/ ?>
