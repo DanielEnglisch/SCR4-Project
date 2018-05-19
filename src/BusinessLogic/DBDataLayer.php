@@ -154,6 +154,16 @@ class DBDataLayer implements DataLayer{
         $con->close();
    }
 
+   public function deleteProduct($pid){
+    $con = $this->getConnection();
+    $stat = $this->prepareStatement($con, 'DELETE FROM products WHERE product_id=?',
+    function($s) use ($pid){
+        $s->bind_param('i', $pid);
+    });
+    $stat->execute();
+    $stat->close();
+    $con->close();
+   }
 
 
     public function getCategories(){

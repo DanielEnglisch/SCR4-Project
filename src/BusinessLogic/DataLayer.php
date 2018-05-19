@@ -13,5 +13,6 @@ interface DataLayer{
     public function getProductsFromQuery($query);
     public function addProduct($username, $name, $manufacturer, $category);
     public function editProduct($pid, $name, $manufacturer, $category);
+    public function deleteProduct($pid);
 
 }

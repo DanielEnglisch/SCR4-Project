@@ -11,12 +11,15 @@
       <td><?php self::htmlOut($product->getCategory()) ?></td>
       <td><?php self::actionLink('Details', 'Detail','Products',[
         'pid' => $product->getId(),
-        'name' => $product->getName()
         ]) ?>
-        <?php if(isset($model['user']) && $model['user']->getUsername() === $product->getAuthor())
+        <?php if(isset($model['user']) && $model['user']->getUsername() === $product->getAuthor()){
                 self::actionLink('Edit', 'editProduct','Products',[
                 'pid' => $product->getId(),
-        ]);
+                 ]);
+                  self::actionLink('Delete', 'deleteProduct','Products',[
+                  'pid' => $product->getId(),
+                 ]);
+            }
         ?>
         </td>
     </tr>

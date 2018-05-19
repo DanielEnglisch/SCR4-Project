@@ -127,5 +127,21 @@ class Products extends \Framework\Controller{
 
     }
 
+    public function GET_deleteProduct(){
+        if(!$this->authManager->isLoggedIn())
+            $this->redirect('Login', 'User');
+
+        $pid = $this->getParam('pid');
+        $username = $this->authManager->getLoggedInUser()->getId();
+        $product = $this->dataLayer->getProductWithId($pid);
+
+        /* If the product isn't his */
+        if($username !== $product->getAuthor())
+            $this->redirect('Index', 'Products');
+
+        $this->dataLayer->deleteProduct($pid);
+        $this->redirect('Index', 'Products');
+    }
+
 
 }
