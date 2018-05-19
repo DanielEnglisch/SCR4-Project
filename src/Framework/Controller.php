@@ -4,6 +4,7 @@ namespace Framework;
 
 abstract class Controller{
 
+
     public final function hasParam($id){
         return isset($_REQUEST[$id]);
     }
@@ -26,5 +27,22 @@ abstract class Controller{
 
     public final function redirect($action, $controller, $params = array()){
         $this->redirectToUrl($this->buildActionLink($action, $controller, $params));
+    }
+
+    /* Light validation */
+
+    private $validationErrors = array();
+
+    public final function notEmpty($field){
+        if(empty($field))
+            $this->validationErrors[] = "Field cannot be empty!";
+    }
+
+    public final function hasErrors(){
+        return count($this->validationErrors) != 0;
+    }
+
+    public final function getErrors(){
+        return $this->validationErrors;
     }
 }

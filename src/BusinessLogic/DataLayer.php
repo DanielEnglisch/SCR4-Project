@@ -11,4 +11,5 @@ interface DataLayer{
     public function getUserForUsernameAndPassword($username, $password);
     public function registerUser($username, $password);
     public function getProductsFromQuery($query);
+    public function addProduct($username, $name, $manufacturer, $category);
 }

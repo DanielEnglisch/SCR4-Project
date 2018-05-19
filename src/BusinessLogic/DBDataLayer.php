@@ -124,6 +124,23 @@ class DBDataLayer implements DataLayer{
         return true;
     }
 
+    public function addProduct($username, $name, $manufacturer, $category){
+
+         $con = $this->getConnection();
+         $con->autocommit(false);
+         $stat = $this->executeStatement($con, 'INSERT INTO products (author, name, manufacturer, category)
+         VALUES (?,?,?,?)',
+         function($s) use ($username, $name, $manufacturer, $category){
+             $s->bind_param('ssss', $username, $name, $manufacturer, $category);
+         });
+         $pid = $stat->insert_id;
+         $stat->close();
+         $con->commit();
+         $con->close();
+         return $pid;
+
+    }
+
     public function getCategories(){
         $categories = array();
         $con = $this->getConnection();
