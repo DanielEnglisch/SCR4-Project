@@ -47,7 +47,7 @@ class DBDataLayer implements DataLayer{
     public function getRatingsForProduct($product_id){
         $ratings = array();
         $con = $this->getConnection();
-        $stat = $this->prepareStatement($con, 'SELECT * FROM ratings WHERE product_id=?',
+        $stat = $this->prepareStatement($con, 'SELECT * FROM ratings WHERE product_id=? ORDER BY date DESC',
         function($s) use ($product_id){
             $s->bind_param('i', $product_id);
         });
