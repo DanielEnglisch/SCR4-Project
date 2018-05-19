@@ -14,7 +14,6 @@ spl_autoload_register(function($class){
 \Framework\Injector::register(\Framework\Session::class,true);
 
 /* Add Globals */
-\Framework\ViewRenderer::$globals["test"] = "GG";
 \Framework\ViewRenderer::$globals["user"] = \Framework\Injector::resolve("BusinessLogic\AuthManager")->getLoggedInUser();
 
 \Framework\MVC::handleRequest();

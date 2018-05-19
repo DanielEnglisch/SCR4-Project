@@ -25,6 +25,10 @@ final class AuthManager{
         }
     }
 
+    public function register($username, $password){
+        return $this->dataLayer->registerUser($username, $password);
+    }
+
     public function logout(){
         $this->session->deleteValue(self::SESSION_USER);
     }

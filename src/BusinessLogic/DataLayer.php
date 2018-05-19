@@ -8,4 +8,5 @@ interface DataLayer{
     public function getRatingsForProduct($product_id);
     public function getUser($username);
     public function getUserForUsernameAndPassword($username, $password);
+    public function registerUser($username, $password);
 }

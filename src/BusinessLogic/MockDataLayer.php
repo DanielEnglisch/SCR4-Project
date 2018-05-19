@@ -84,4 +84,16 @@ class MockDataLayer implements DataLayer {
 
         return null;
     }
+
+    public function registerUser($username, $password){
+
+        return $this->getUser($username) != null;
+
+        /* Check if user exists */
+        if($this->getUser($username) == null){
+            $this->users[] = new User($username, $password);
+            return true;
+        }
+        return false;
+    }
 }
