@@ -142,6 +142,4 @@ class Products extends \Framework\Controller{
         $this->dataLayer->deleteProduct($pid);
         $this->redirect('Index', 'Products');
     }
-
-
 }
