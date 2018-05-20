@@ -13,7 +13,7 @@
         'pid' => $product->getId(),
         ]) ?>
         <?php if(isset($model['user']) && $model['user']->getUsername() === $product->getAuthor()){
-                self::actionLink('Edit', 'editProduct','Products',[
+                self::actionLink('Edit ', 'editProduct','Products',[
                 'pid' => $product->getId(),
                  ]);
                   self::actionLink('Delete', 'deleteProduct','Products',[

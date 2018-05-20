@@ -38,6 +38,13 @@ abstract class Controller{
             $this->validationErrors[] = "Field cannot be empty!";
     }
 
+    public final function validGrade($grade){
+        if(empty($grade))
+            $this->validationErrors[] = "Field cannot be empty!";
+        else if($grade < 1 || $grade > 5)
+            $this->validationErrors[] = "You have entered a invalid grade!";
+    }
+
     public final function hasErrors(){
         return count($this->validationErrors) != 0;
     }

@@ -5,12 +5,15 @@
     <div class="container">
         <b>Author: </b><?php self::htmlOut($model['product']->getAuthor()); ?></br>
         <b>Manufacturer: </b><?php self::htmlOut($model['product']->getManufacturer()); ?></br>
-         <b>Ctageory: </b><?php self::htmlOut($model['product']->getCategory()); ?></br>
+        <b>Catgeory: </b><?php self::htmlOut($model['product']->getCategory()); ?></br>
         <b>Number of Ratings: </b><?php self::htmlOut($model['product']->getNumberOfRatings()); ?></br>
         <b>Average Rating: </b><?php self::htmlOut($model['product']->getAverageRating()); ?></br>
     </div>
 
     <h2> Ratings: </h2>
+     <?php if(isset($model['user'])): ?>
+                <?php self::actionLink('Add Rating', 'addRating','Ratings', ['pid' => $model['product']->getId()]); ?>
+                <?php endif; ?>
     <div class="container">
         <?php if($model['ratings'] != null): ?>
 

@@ -222,8 +222,62 @@ class DBDataLayer implements DataLayer{
 
         return $user;
     }
-    
-   
+
+    /* === Rating === */
+    public function addRating($pid, $username, $value, $comment){
+        $con = $this->getConnection();
+        $con->autocommit(false);
+        $stat = $this->executeStatement($con, 'INSERT INTO ratings (product_id, author, value, comment)
+        VALUES (?,?,?,?)',
+        function($s) use ($pid, $username, $value, $comment){
+            $s->bind_param('isis', $pid, $username, $value, $comment);
+        });
+        $rid = $stat->insert_id;
+        $stat->close();
+        $con->commit();
+        $con->close();
+        return $rid;
+    }
+
+    public function editRating($rid, $value, $comment){
+        $con = $this->getConnection();
+        $con->autocommit(false);
+        $stat = $this->executeStatement($con, 'UPDATE ratings SET value=?, comment=? WHERE rating_id=?',
+        function($s) use ($value, $comment, $rid){
+            $s->bind_param('isi', $value, $comment, $rid);
+        });
+        $stat->close();
+        $con->commit();
+        $con->close();
+    }
+
+    public function deleteRating($rid){
+        $con = $this->getConnection();
+        $stat = $this->prepareStatement($con, 'DELETE FROM ratings WHERE rating_id=?',
+        function($s) use ($rid){
+            $s->bind_param('i', $rid);
+        });
+        $stat->execute();
+        $stat->close();
+        $con->close();
+    }
+
+    public function getRatingWithId($rid){
+        $rating = null;
+        $con = $this->getConnection();
+        $stat = $this->prepareStatement($con, 'SELECT * FROM ratings WHERE rating_id=?',
+        function($s) use ($rid){
+            $s->bind_param('i', $rid);
+        });
+        $stat->execute();
+        $res = $stat->get_result();
+        $p = $res->fetch_assoc();
+        $rating =  new \Models\Rating($p['rating_id'],  $p['product_id'], $p['author'] ,$p['date'] ,$p['value'] ,$p['comment']);
+        
+        $stat->close();
+        $con->close();
+        return $rating;
+    }
 
     /* Helpers */
     private function getConnection(){
