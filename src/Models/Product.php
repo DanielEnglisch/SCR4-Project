@@ -38,7 +38,7 @@ class Product extends Entity{
     }
 
     public function getAverageRating(){
-        return $this->average_rating;
+        return number_format($this->average_rating, 1, '.', '');
     }
 
     public function getCategory(){
