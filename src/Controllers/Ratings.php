@@ -34,7 +34,7 @@ class Ratings extends \Framework\Controller
        $value = $this->getParam('value');
        $pid = $this->getParam('pid');
 
-       $this->notEmpty($comment);
+       //$this->notEmpty($comment);
        $this->validGrade($value);
 
        if($this->hasErrors()){
@@ -113,7 +113,7 @@ class Ratings extends \Framework\Controller
         $value = $this->getParam('value');
         $comment = $this->getParam('comment');
 
-        $this->notEmpty($comment);
+        //$this->notEmpty($comment);
         $this->validGrade($value);
 
         if($this->hasErrors()){

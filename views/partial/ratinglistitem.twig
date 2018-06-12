@@ -17,7 +17,9 @@
         </p>
         <div class="container">
             <b>Rating: </b> <?php self::htmlOut($rating->getValue()); ?><br/>
+            <?php if(!empty($rating->getComment())): ?>
             <b>Comment: </b> <?php self::htmlOut($rating->getComment()); ?>
+            <?php endif; ?>
         </div>
 
     </div>
